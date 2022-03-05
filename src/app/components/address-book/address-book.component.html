@@ -1,1 +1,20 @@
-<p>address-book works!</p>
+<section class="address-book">
+    <mat-selection-list #shoes>
+        <mat-list-item *ngFor="let addressBook of addressBookEntries">
+           <button class="address-book__row address-book__start" mat-button (click)="onClick(addressBook)"><span>{{addressBook.firstName}}</span><span>&nbsp;</span><span>{{addressBook.lastName}}</span></button>
+        </mat-list-item>        
+      </mat-selection-list> 
+
+      <mat-card *ngIf="selectedAddressBook !== emptyAddressBook">
+        <mat-card-title>
+            <div class="address-book__row  address-book__between">
+                <div>
+                    <span>{{selectedAddressBook.firstName}}</span><span>&nbsp;</span><span>{{selectedAddressBook.lastName}}</span>
+                </div>
+                <button class="address-book__close"  mat-button (click)="onClear()"><span>&#10006;</span></button>
+            </div>
+        </mat-card-title>
+        <mat-card-content>{{selectedAddressBook.phoneNumber}}</mat-card-content>
+      </mat-card>
+
+</section>

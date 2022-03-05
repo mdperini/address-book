@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddressBookComponent } from './components/address-book/address-book.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddressBookModule } from './components/address-book/address-book.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AddressBookComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    AddressBookModule
   ],
   providers: [],
   bootstrap: [AppComponent]
