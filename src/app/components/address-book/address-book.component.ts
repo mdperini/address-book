@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { addressBookData } from 'src/app/shared/data/address-book-data';
-import { emptyAddressBook } from 'src/app/shared/data/empty-address-book';
+import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
 
 @Component({
@@ -12,21 +12,21 @@ import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple'
 
 })
 export class AddressBookComponent implements OnInit {
+  userName: string = 'Michael Perini';
   addressBookEntries: addressBookSimple[] = addressBookData;
-  selectedAddressBook: addressBookSimple = emptyAddressBook;
-  emptyAddressBook = emptyAddressBook;
+  selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
+  emptyAddressBookEntry = emptyAddressBookEntry;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  get totalEntries(): number {
+    return this.addressBookEntries ? this.addressBookEntries.length : 0; 
+  }
+
   onClick(newValue: addressBookSimple): void {
-   this.selectedAddressBook = newValue;
+   this.selectedAddressBookEntry = newValue;
   }
-
-  onClear(): void {
-    this.selectedAddressBook = emptyAddressBook;
-  }
-
 }

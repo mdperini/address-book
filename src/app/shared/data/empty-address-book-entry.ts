@@ -1,6 +1,6 @@
 import { addressBookSimple } from "../model/add-book-summary-simple";
 
-export const emptyAddressBook: addressBookSimple = {
+export const emptyAddressBookEntry: addressBookSimple = {
     firstName: '',
     lastName: '',
     phoneNumber: ''
