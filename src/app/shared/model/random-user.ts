@@ -10,5 +10,11 @@ export interface randomUser {
         last: string
     },
     phone: string;
+    info : {
+        seed: string,
+        results: number,
+        page: number,
+        version: string
+    }
 }
 

@@ -1,5 +1,5 @@
 <section class="address-book">
-    <app-address-book-header [userName]="userName"></app-address-book-header>
+    <app-address-book-header [title]="title"></app-address-book-header>
     <mat-selection-list #addressbooklist>
         <mat-list-item *ngFor="let addressBookEntry of addressBookEntries">
            <button class="address-book__row address-book__start" mat-button (click)="onClick(addressBookEntry)">
@@ -7,6 +7,6 @@
            </button>
         </mat-list-item>        
     </mat-selection-list> 
-    <app-address-book-footer [entries]="totalEntries"></app-address-book-footer>
+    <app-address-book-footer [entries]="totalEntries" (pageRequest)="onPageRequest($event)"></app-address-book-footer>
     <app-address-book-detail [addressBookEntry]="selectedAddressBookEntry"></app-address-book-detail>    
 </section>

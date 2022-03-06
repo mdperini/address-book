@@ -8,5 +8,5 @@ import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@a
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddressBookHeaderComponent {
-  @Input() userName: string = '';
+  @Input() title: string = '';
 }

@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { addressBookData } from 'src/app/shared/data/address-book-data';
 import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
+import { ButtonActions } from 'src/app/shared/model/button-actions';
 import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
+import { Subscription  } from 'rxjs';
 
 @Component({
   selector: 'app-address-book',
@@ -13,23 +15,36 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
-export class AddressBookComponent implements OnInit {
-  userName: string = 'Michael Perini';
+export class AddressBookComponent implements OnInit, OnDestroy {
+  title: string = 'My Address Book';
   addressBookEntries: addressBookSimple[] = addressBookData;
   selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
   emptyAddressBookEntry = emptyAddressBookEntry;
+  subscription: Subscription = new Subscription();
 
-  constructor(private randomUserService: RandomUserService,
-              private randomUserProvider: RandomUserProvider,
+  constructor(private randomUserProvider: RandomUserProvider,
+              private randomUserService: RandomUserService,
               private chgDetRef: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.randomUserProvider.addressBookBehavor.subscribe(data => {
+    this.initServices();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private initServices(): void  {
+    this.subscription = this.randomUserProvider.addressBookObservable.subscribe(data => {
       this.addressBookEntries = data;
       this.chgDetRef.detectChanges();
     });
-    
-    this.randomUserService.fetchRandomUsers();    
+
+   this.fetchRandomUsers(ButtonActions.Next); 
+  }
+
+  private fetchRandomUsers(buttonAction: ButtonActions): void {
+    this.randomUserService.fetchRandomUsers(buttonAction);   
   }
 
   get totalEntries(): number {
@@ -38,5 +53,9 @@ export class AddressBookComponent implements OnInit {
 
   onClick(newValue: addressBookSimple): void {
    this.selectedAddressBookEntry = newValue;
+  }
+
+  onPageRequest(newValue: ButtonActions | any): void {
+    this.fetchRandomUsers(newValue)  
   }
 }

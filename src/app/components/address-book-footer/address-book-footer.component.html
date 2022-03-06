@@ -1,7 +1,27 @@
 <section class="footer">
     <mat-card>
-        <mat-card-subtitle>
-            <span>Entries:</span><span>&nbsp;</span><span>{{ entries }}</span> 
-        </mat-card-subtitle>
+        <mat-card-content>
+            <div class="footer__buttons">
+                <button mat-button (click)="pageRequest.emit(ButtonActions.Previous)"
+                [disabled]="pageNumber === 1">
+                    {{ ButtonActions.Previous }}
+                </button>
+                <button mat-button (click)="pageRequest.emit(ButtonActions.Next)">
+                    {{ ButtonActions.Next }}
+                </button>
+            </div>
+
+        </mat-card-content>
+        <mat-card-footer>
+            <div class="footer__pagination">
+                <div class="footer__entries">
+                    <span>Entries:</span><span>&nbsp;</span><span>{{ entries }}</span> 
+                    <span>&nbsp;&nbsp;&nbsp;</span><span>Per page:</span><span>&nbsp;</span><span>{{ entriesPerPage }}</span> 
+                </div>
+                <div class="footer__page-number">
+                    <span>{{pageNumber}}</span><span>&nbsp;</span><span>of</span> 
+                </div>
+            </div>            
+        </mat-card-footer>
     </mat-card>
 </section>

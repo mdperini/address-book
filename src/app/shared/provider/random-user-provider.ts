@@ -1,36 +1,42 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subscription  } from 'rxjs';
-import { randomUsers } from '../model/random-user';
+import { randomUser, randomUsers } from '../model/random-user';
 import { addressBookSimple } from '../model/add-book-summary-simple';
 
 @Injectable({ providedIn: 'root'})
 export class RandomUserProvider implements OnDestroy {
-
-    addressBook: addressBookSimple[] = [];
-    addressBookBehavor = new BehaviorSubject<addressBookSimple[]>(this.addressBook);
-    subscription: Subscription = new Subscription();
-
+    private addressBookBehavior = new BehaviorSubject<addressBookSimple[]>([]);
+    private randomUserSubscriptions: Subscription[] = [];
 
     constructor(private http: HttpClient) { }
 
-    fetchRandomUsers(): void {
-        const url = 'https://randomuser.me/api/?results=10';
-        this.subscription = this.http.jsonp(url, 'callback')
-        .subscribe(data => {
-            const users: randomUsers | any = data;
-            this.addressBook = users.results.map( (user: { name: { first: any; last: any; }; phone: any; }) => {
-                return <addressBookSimple> {
-                    firstName: user.name.first,
-                    lastName: user.name.last,
-                    phoneNumber: user.phone,
-                }                
-            });
-            this.addressBookBehavor.next(this.addressBook)
-        });       
+    public get addressBookObservable() {
+        return this.addressBookBehavior;
+    }
+
+    fetchRandomUsers(pageNumber: number, entriesPerPage: number): void {
+        const url = `https://randomuser.me/api/?page=${pageNumber}&results=${entriesPerPage}&inc=name,phone,info,seed&seed=abc`;
+       
+        this.randomUserSubscriptions.push(this.http.jsonp(url, 'callback')
+            .subscribe(data => {
+                const users: randomUsers | any = data;
+                const seed = users.info.seed;
+                const addressBook = users.results.map( (user: randomUser) => {
+                    return <addressBookSimple> {
+                        // seed: user.info.seed,
+                        firstName: user.name.first,
+                        lastName: user.name.last,
+                        phoneNumber: user.phone,
+                    }                
+                });
+                console.log(JSON.stringify(addressBook));
+            
+                this.addressBookBehavior.next(addressBook)
+            }));       
     }
 
     ngOnDestroy(): void {
-        this.subscription.unsubscribe();
+        this.randomUserSubscriptions.forEach( s=> s.unsubscribe());
     }
 }
