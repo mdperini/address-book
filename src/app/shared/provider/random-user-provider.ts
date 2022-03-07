@@ -16,15 +16,13 @@ export class RandomUserProvider implements OnDestroy {
     }
 
     fetchRandomUsers(pageNumber: number, entriesPerPage: number): void {
-        const url = `https://randomuser.me/api/?page=${pageNumber}&results=${entriesPerPage}&inc=name,phone,info,seed&seed=abc`;
+        const url = `https://randomuser.me/api/?page=${pageNumber}&results=${entriesPerPage}&inc=name,phone&seed=abc`;
        
         this.randomUserSubscriptions.push(this.http.jsonp(url, 'callback')
             .subscribe(data => {
                 const users: randomUsers | any = data;
-                const seed = users.info.seed;
                 const addressBook = users.results.map( (user: randomUser) => {
                     return <addressBookSimple> {
-                        // seed: user.info.seed,
                         firstName: user.name.first,
                         lastName: user.name.last,
                         phoneNumber: user.phone,

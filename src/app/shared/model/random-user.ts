@@ -3,18 +3,11 @@ export interface randomUsers {
     info: string
 }
 
-
 export interface randomUser {
     name: {
         first: string,
         last: string
     },
-    phone: string;
-    info : {
-        seed: string,
-        results: number,
-        page: number,
-        version: string
-    }
+    phone: string;   
 }
 

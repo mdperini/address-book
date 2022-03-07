@@ -8,7 +8,7 @@ import { AddressBookModule } from './components/address-book/address-book.module
 import { HttpClientJsonpModule } from '@angular/common/http';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent    
   ],
   imports: [
     AddressBookModule,

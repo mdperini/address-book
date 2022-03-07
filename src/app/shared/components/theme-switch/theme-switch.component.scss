@@ -1,0 +1,11 @@
+app-theme-switch {
+    .theme-switch {
+        font-size: 12px;
+        opacity: .7;
+        margin: -12px 22px 12px 0;
+        &:hover {
+            opacity: 1;
+        }     
+    }    
+
+}

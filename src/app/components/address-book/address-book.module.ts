@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ThemeSwitchComponent } from 'src/app/shared/components/theme-switch/theme-switch.component';
 import { MaterialModule } from 'src/app/shared/modules/material.module';
 import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider';
 import { AddressBookDetailComponent } from '../address-book-detail/address-book-detail.component';
@@ -12,7 +13,8 @@ const components = [ AddressBookComponent,
   FullnameComponent, 
   AddressBookDetailComponent,
   AddressBookHeaderComponent,
-  AddressBookFooterComponent];
+  AddressBookFooterComponent,
+  ThemeSwitchComponent];
 
 @NgModule({
   declarations: [...components],

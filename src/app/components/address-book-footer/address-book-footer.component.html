@@ -1,6 +1,6 @@
 <section class="footer">
     <mat-card>
-        <mat-card-content>
+        <mat-card-content class="footer__buttons">
             <div class="footer__buttons">
                 <button mat-button (click)="pageRequest.emit(ButtonActions.Previous)"
                 [disabled]="pageNumber === 1">
@@ -16,7 +16,6 @@
             <div class="footer__pagination">
                 <div class="footer__entries">
                     <span>Entries:</span><span>&nbsp;</span><span>{{ entries }}</span> 
-                    <span>&nbsp;&nbsp;&nbsp;</span><span>Per page:</span><span>&nbsp;</span><span>{{ entriesPerPage }}</span> 
                 </div>
                 <div class="footer__page-number">
                     <span>{{pageNumber}}</span><span>&nbsp;</span><span>of</span> 

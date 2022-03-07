@@ -1,5 +1,9 @@
 app-address-book-header {
     .header {
-        opacity: 1;
+        &__row {
+            display: flex; 
+            width: 100%;        
+            justify-content: space-between; 
+        }
     }
 }

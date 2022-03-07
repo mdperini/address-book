@@ -4,7 +4,6 @@ import { RandomUserProvider } from '../provider/random-user-provider';
 
 const defaultEntriesPerPage = 10;
 
-
 @Injectable({ providedIn: 'root'})
 export class RandomUserService {
     private _pageNumber: number = 0;
@@ -17,16 +16,12 @@ export class RandomUserService {
     }
 
     public set entriesPerPage(theEntriesPerPage: number) {
-        if (theEntriesPerPage <= 0 || theEntriesPerPage >= 100) {
-            throw new Error('The age is invalid');
-        }
         this._entriesPerPage = theEntriesPerPage;
     }
 
     public get entriesPerPage() {
         return this._entriesPerPage;
     }
-
 
     fetchRandomUsers(buttonAction: ButtonActions): void {      
         switch(buttonAction) {
