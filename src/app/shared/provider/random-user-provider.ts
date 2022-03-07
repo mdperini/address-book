@@ -12,7 +12,7 @@ export class RandomUserProvider implements OnDestroy {
     constructor(private http: HttpClient) { }
 
     public get addressBookObservable() {
-        return this.addressBookBehavior;
+        return this.addressBookBehavior.asObservable();
     }
 
     fetchRandomUsers(pageNumber: number, entriesPerPage: number): void {
