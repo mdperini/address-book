@@ -1,5 +1,22 @@
 # AddressBook
 
+Basic Address Book web application that comsumes data from https://randomuser.me/
+
+Payload consumed is small, containing user's title, first and last names and their phone number.
+
+Initial view shows the first ten entries containing user's first and last name, currently only 10 entries are shown per page.
+
+Clicking on the user name open the detail view where their phone number is displayed.
+
+Pagination is also available.
+
+So is the ability to toggle light and dask themes.
+
+
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
 ## Development server
