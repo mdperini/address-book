@@ -6,14 +6,10 @@ const defaultEntriesPerPage = 10;
 
 @Injectable({ providedIn: 'root'})
 export class RandomUserService {
-    private _pageNumber: number = 0;
     private _entriesPerPage: number = defaultEntriesPerPage
-
+      private _pageNumber: number = 0;
+  
     constructor(private randomUserProvider: RandomUserProvider) { }
-
-    public get pageNumber() {
-        return this._pageNumber;
-    }
 
     public set entriesPerPage(theEntriesPerPage: number) {
         this._entriesPerPage = theEntriesPerPage;
@@ -21,6 +17,10 @@ export class RandomUserService {
 
     public get entriesPerPage() {
         return this._entriesPerPage;
+    }
+
+    public get pageNumber() {
+        return this._pageNumber;
     }
 
     fetchRandomUsers(buttonAction: ButtonActions): void {      

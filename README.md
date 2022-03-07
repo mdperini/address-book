@@ -1,16 +1,16 @@
 # AddressBook
 
-Angular 13 Address Book web application that comsumes data from https://randomuser.me/
+Address Book is an Angular 13 SPA web application that comsumes mock data from https://randomuser.me/
 
-Payload consumed is small, containing user's title, first and last names and their phone number.
+The Payload consumed is small, containing user's title, first and last names and their phone number.
 
-Initial view shows the first ten entries containing user's first and last name, currently only 10 entries are shown per page.
+Initial list view shows the first ten entries containing users' first and last name, currently only 10 entries are shown per page.
 
-Clicking on the user's name opens the detail view where their phone number is displayed.
+Clicking on a user's name opens the detail view where their phone number is displayed.
 
-Pagination is available.
-
-So is the ability to toggle light and dark themes.
+Other features include:
+- pagination
+- toggle light and dark themes.
 
 
 Application was developed using node.js v16.14.0, Angular 13.
@@ -20,7 +20,7 @@ Styling utilizes Angular Material.
 To run locally please run the following steps:
 1) Open link on browser: https://github.com/mdperini/address-book
 2) Click on 'Code' Button and select 'Download Zip'.
-3) Once the file is download, decompress file.
+3) Once the file is downloaded, decompress file.
 4) Open Visual Studio Code and select folder or open a bash-session inside of folder 'address-book'.
 5) From the command-line run: 'npm i' 
 6) Then run 'npm start'

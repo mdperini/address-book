@@ -28,9 +28,7 @@ export class RandomUserProvider implements OnDestroy {
                         phoneNumber: user.phone,
                     }                
                 });
-                console.log(JSON.stringify(addressBook));
-            
-                this.addressBookBehavior.next(addressBook)
+               this.addressBookBehavior.next(addressBook)
             }));       
     }
 
