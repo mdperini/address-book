@@ -27,6 +27,35 @@ To run locally please run the following steps:
 
 Note: Once the start step is completed, your default browser will automatically open link http://localhost:4200/
 
+------------------------------------------------------------------------------------------------------------------------------
+Overall approach
+■ What features you implemented.    
+    - Responsive module design that provide read-only access to random use data.    
+    - To give the design the proper 'look and feel' Angular Material components and themes were implemented.    
+    - To give the design an Address Book feel pagination was implemented, displaying 10 entries per page.    
+    - Summary / Detail was implemented as per requirement.        
+        - To close the detail view just click on the X on the upper right-hand side.
+■ Given more time, what else would you have liked to complete and howlong would it have taken you?    
+    - Given more time:        
+        - internationalization support.
+            - Random User supports several languages, for demo purposes we could support English, Spanish and Italian.
+            - All test labels would also need to be translated.            
+            - Estimate: 3 days.        
+        - media queries support different popular form factors
+            - Estimate: 3 days.       
+        - Replace current rxjs implementation with Promise.
+            - Given we receive data in chunks versus individual items, Promise seems more ideal.         
+            - Additional research is required to re-shape the current implementation.              
+            - Estimate: 3 days.    
+■ Given more time, what else would you have done to make the projectmore robust?   
+        - Given more time, I would like feedback from someone at Nuvalence to see what they expected from an address book application.        
+            - Most of my experience is in the financial sector, it would be fascinating to get their perspective.    
+        - Look into what it would take to provide a deployment to a cloud based infrastructure solution.    
+        - Offline support is another possibility.    
+        - Implement a datastore like Akti and provide support for CRUD operation.    
+        - Alter the design to support sales and marketing.   
+        - Provide search feature plus built-in or canned searches.
+
 
 ------------------------------------------------------------------------------------------------------------------------------
 
