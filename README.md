@@ -56,7 +56,6 @@ Overall approach
         - Alter the design to support sales and marketing.   
         - Provide search feature plus built-in or canned searches.
 
-
 ------------------------------------------------------------------------------------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
