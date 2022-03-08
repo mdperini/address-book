@@ -10,4 +10,3 @@ export interface randomUser {
     },
     phone: string;   
 }
-

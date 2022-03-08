@@ -13,10 +13,4 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   });
-
-  xit('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBe(true);
-  });  
 });

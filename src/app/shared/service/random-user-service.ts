@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
-const defaultEntriesPerPage = 10;
+export const defaultEntriesPerPage = 10;
 
 @Injectable({ providedIn: 'root'})
 export class RandomUserService {

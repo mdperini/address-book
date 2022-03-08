@@ -7,7 +7,7 @@ import { addressBookSimple } from '../model/add-book-summary-simple';
 @Injectable({ providedIn: 'root'})
 export class RandomUserProvider implements OnDestroy {
     private addressBookBehavior = new BehaviorSubject<addressBookSimple[]>([]);
-    private randomUserSubscriptions: Subscription[] = [];
+    private subscription: Subscription = new Subscription();
 
     constructor(private http: HttpClient) { }
 
@@ -18,7 +18,7 @@ export class RandomUserProvider implements OnDestroy {
     fetchRandomUsers(pageNumber: number, entriesPerPage: number): void {
         const url = `https://randomuser.me/api/?page=${pageNumber}&results=${entriesPerPage}&inc=name,phone&seed=abc`;
        
-        this.randomUserSubscriptions.push(this.http.jsonp(url, 'callback')
+        this.subscription = this.http.jsonp(url, 'callback')
             .subscribe(data => {
                 const users: randomUsers | any = data;
                 const addressBook = users.results.map( (user: randomUser) => {
@@ -29,10 +29,10 @@ export class RandomUserProvider implements OnDestroy {
                     }                
                 });
                this.addressBookBehavior.next(addressBook)
-            }));       
+            });       
     }
 
     ngOnDestroy(): void {
-        this.randomUserSubscriptions.forEach( s=> s.unsubscribe());
+        this.subscription.unsubscribe();
     }
 }
