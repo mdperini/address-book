@@ -32,6 +32,7 @@ Overall approach
 ■ What features you implemented.
     - Responsive module design that provides read-only access to random use data.
     - To give the design the proper 'look and feel' Angular Material components and themes were implemented.
+        -Flex box was also applied for features like space-between, etc.
     - To give the design an Address Book feel pagination was implemented, displaying 10 entries per page. 
     - Summary / Detail was implemented as per requirement.
         - To close the detail view just click on the X on the upper right-hand side.
