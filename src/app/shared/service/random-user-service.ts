@@ -7,7 +7,7 @@ const defaultEntriesPerPage = 10;
 @Injectable({ providedIn: 'root'})
 export class RandomUserService {
     private _entriesPerPage: number = defaultEntriesPerPage
-      private _pageNumber: number = 0;
+    private _pageNumber: number = 0;
   
     constructor(private randomUserProvider: RandomUserProvider) { }
 

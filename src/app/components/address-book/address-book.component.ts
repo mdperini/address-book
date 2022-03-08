@@ -7,6 +7,8 @@ import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
 import { Subscription  } from 'rxjs';
 
+export const title = 'My Address Book';
+
 @Component({
   selector: 'app-address-book',
   templateUrl: './address-book.component.html',
@@ -15,12 +17,13 @@ import { Subscription  } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 
 })
+
 export class AddressBookComponent implements OnInit, OnDestroy {
-  title: string = 'My Address Book';
+  title: string = title;
   addressBookEntries: addressBookSimple[] = addressBookData;
   selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
   emptyAddressBookEntry = emptyAddressBookEntry;
-  subscription: Subscription = new Subscription();
+  private subscription: Subscription = new Subscription();
 
   constructor(private randomUserProvider: RandomUserProvider,
               private randomUserService: RandomUserService,
