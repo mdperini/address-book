@@ -10,9 +10,15 @@ describe('AddressBookFooterComponent', () => {
   let httpClient: Mock<HttpClient>;
   let randomUserService: Mock<RandomUserService>;
 
+  let pageNumber = 1;
+  let entriesPerPage = 10;
+
   beforeEach(() => {
     httpClient = new Mock<HttpClient>();
-    randomUserService  = new Mock<RandomUserService>();
+    randomUserService  = new Mock<RandomUserService>({
+      pageNumber: pageNumber,
+      entriesPerPage: entriesPerPage
+    });
   });
 
   beforeEach(async () => {
@@ -32,5 +38,15 @@ describe('AddressBookFooterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    expect(component.entries).toEqual(0);
   });
+
+  it('should get page number', () => {
+    expect(component.pageNumber).toEqual(pageNumber);
+  });
+
+  it('should get entries per page', () => {
+    expect(component.entriesPerPage).toEqual(entriesPerPage);
+  });
+  
 });
