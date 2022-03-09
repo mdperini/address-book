@@ -4,11 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
 import { AddressBookComponent, title } from './address-book.component';
 import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
 import { addressBookData } from 'src/app/shared/data/address-book-data';
 import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
-import { ButtonActions } from 'src/app/shared/model/button-actions';
 
 describe('AddressBookComponent', () => {
   let component: AddressBookComponent;
@@ -16,17 +15,20 @@ describe('AddressBookComponent', () => {
   let httpClient: Mock<HttpClient>;
   let randomUserProvider: Mock<RandomUserProvider>;
   let randomUserService: Mock<RandomUserService>;
-  let addressBookBehavior: BehaviorSubject<addressBookSimple[]>; 
+  let addressBookBehavior: BehaviorSubject<addressBookSimple[]>
   
   beforeEach(() => {
-    httpClient = new Mock<HttpClient>();
-    addressBookBehavior = new BehaviorSubject<addressBookSimple[]>(addressBookData);
-    randomUserProvider  = new Mock<RandomUserProvider>({
-      addressBookObservable: addressBookBehavior.asObservable(),
-      fetchRandomUsers: Mock.ANY_FUNC
+    httpClient = new Mock<HttpClient>({
+      get: Mock.ANY_FUNC
     });
+    randomUserProvider  = new Mock<RandomUserProvider>({
+       fetchRandomUsers: Mock.ANY_FUNC
+    });
+
+    addressBookBehavior = new BehaviorSubject<addressBookSimple[]>(addressBookData);
+  
     randomUserService  = new Mock<RandomUserService>({
-      fetchRandomUsers: Mock.ANY_FUNC
+      fetchRandomUsers: addressBookBehavior.asObservable
     });
   });
 
@@ -46,7 +48,7 @@ describe('AddressBookComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  fit('should create', () => {
     expect(component).toBeTruthy();
   });
 
@@ -57,20 +59,6 @@ describe('AddressBookComponent', () => {
     expect(component.emptyAddressBookEntry).toEqual(emptyAddressBookEntry);
   });
   
-  it('On Init should', () => {
-    spyOn<any>(component, 'initServices');
-    component.ngOnInit();
-    fixture.detectChanges();
-    expect(component['initServices']).toHaveBeenCalled();
-  });
-
-  it('On Destroy destroys subscription', () => {
-    spyOn(component['subscription'], 'unsubscribe');
-    component.ngOnDestroy();
-    fixture.detectChanges();
-    expect(component['subscription'].unsubscribe).toHaveBeenCalled();
-  });
-
   it('addressBookEntries should be populated', () => {
     component.addressBookEntries = []
     fixture.detectChanges();
@@ -78,13 +66,6 @@ describe('AddressBookComponent', () => {
     addressBookBehavior.next(addressBookData)
     fixture.detectChanges();
     expect(component.addressBookEntries).toEqual(addressBookData);
-  });
-
-  it('initServices should call', () => {
-    spyOn<any>(component, 'fetchRandomUsers');
-    component['initServices']();
-    fixture.detectChanges();
-    expect(component['fetchRandomUsers']).toHaveBeenCalled();
   });
 
   it('totalEntries should equal', () => {
@@ -106,16 +87,4 @@ describe('AddressBookComponent', () => {
     fixture.detectChanges();
     expect(component.selectedAddressBookEntry).toEqual(addressBookData[0]);    
   });
-
-  it('onPageRequest should call', () => {
-    spyOn<any>(component, 'fetchRandomUsers');
-    component['onPageRequest'](ButtonActions.Next);
-    fixture.detectChanges();
-    expect(component['fetchRandomUsers']).toHaveBeenCalledWith(ButtonActions.Next);
-    component['onPageRequest'](ButtonActions.Previous);
-    fixture.detectChanges();
-    expect(component['fetchRandomUsers']).toHaveBeenCalledWith(ButtonActions.Previous);
-
-  });
-
 });

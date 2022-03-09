@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of, switchMap } from 'rxjs';
+import { addressBookSimple } from '../model/add-book-summary-simple';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
@@ -9,7 +11,10 @@ export class RandomUserService {
     private _entriesPerPage: number = defaultEntriesPerPage
     private _pageNumber: number = 0;
   
-    constructor(private randomUserProvider: RandomUserProvider) { }
+    constructor(private randomUserProvider: RandomUserProvider) {
+        // const switched = of(1, 2, 3).pipe(switchMap((x: number) => of(x, x ** 2, x ** 3)));
+        // switched.subscribe(x => console.log(x));
+     }
 
     public set entriesPerPage(theEntriesPerPage: number) {
         this._entriesPerPage = theEntriesPerPage;
@@ -23,8 +28,10 @@ export class RandomUserService {
         return this._pageNumber;
     }
 
-    fetchRandomUsers(buttonAction: ButtonActions): void {      
-        switch(buttonAction) {
+    fetchRandomUsers(buttonAction?: ButtonActions): Observable<addressBookSimple[]> {      
+        const action = buttonAction ? buttonAction : ButtonActions.Next;
+
+        switch(action) {
             case ButtonActions.Next:
                 this._pageNumber++;
                 break;
@@ -36,6 +43,6 @@ export class RandomUserService {
                 break;
         }
         
-        this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
+       return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 }

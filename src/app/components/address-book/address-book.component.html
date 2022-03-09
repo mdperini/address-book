@@ -1,7 +1,7 @@
 <section class="address-book">
     <app-address-book-header [title]="title"></app-address-book-header>
     <mat-selection-list #addressbooklist>
-        <mat-list-item *ngFor="let addressBookEntry of addressBookEntries">
+        <mat-list-item *ngFor="let addressBookEntry of randomUser$ | async ">
            <button class="address-book__row address-book__start" mat-button (click)="onClick(addressBookEntry)">
                <app-fullname [addressBookEntry]="addressBookEntry"></app-fullname>
            </button>

@@ -1,5 +1,5 @@
 export interface randomUsers {
-    results: [randomUser],
+    results: randomUser[],
     info: string
 }
 

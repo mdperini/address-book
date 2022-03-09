@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressBookModule } from './components/address-book/address-book.module';
-import { HttpClientJsonpModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent    
@@ -15,8 +14,7 @@ import { HttpClientJsonpModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,   
-    HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -14,8 +14,7 @@ describe('Provider: RandomUserService', () => {
   
   beforeEach(() => {
     addressBookBehavior = new BehaviorSubject<addressBookSimple[]>(addressBookData);
-    randomUserProvider  = new Mock<RandomUserProvider>({
-      addressBookObservable: addressBookBehavior.asObservable(),
+    randomUserProvider  = new Mock<RandomUserProvider>({   
       fetchRandomUsers: Mock.ANY_FUNC
     });  
   });

@@ -13,7 +13,7 @@ describe('Provider: RandomUserProvider', () => {
    
   beforeEach(() => {
     httpClient = new Mock<HttpClient>({
-      jsonp: Mock.ANY_FUNC
+      get: Mock.ANY_FUNC
     });
     addressBookBehavior = new BehaviorSubject<addressBookSimple[]>([]);    
   });
@@ -27,12 +27,5 @@ describe('Provider: RandomUserProvider', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
-  });
-
-  it('On Destroy destroys subscription', () => {
-    spyOn(service['subscription'], 'unsubscribe');
-    service.ngOnDestroy();
-    expect(service['subscription'].unsubscribe).toHaveBeenCalled();
-  });
-  
+  }); 
 });
