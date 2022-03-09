@@ -13,21 +13,12 @@ export class RandomUserService {
   
     constructor(private randomUserProvider: RandomUserProvider) {}
 
-    public set entriesPerPage(theEntriesPerPage: number) {
-        this._entriesPerPage = theEntriesPerPage;
-    }
+    public get entriesPerPage() { return this._entriesPerPage; }
 
-    public get entriesPerPage() {
-        return this._entriesPerPage;
-    }
-
-    public get pageNumber() {
-        return this._pageNumber;
-    }
+    public get pageNumber() { return this._pageNumber; }
 
     fetchRandomUsers(buttonAction?: ButtonActions): Observable<addressBookSimple[]> {      
         const action = buttonAction ? buttonAction : ButtonActions.Next;
-
         switch(action) {
             case ButtonActions.Next:
                 this._pageNumber++;

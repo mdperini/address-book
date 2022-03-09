@@ -16,11 +16,7 @@ export class AddressBookFooterComponent {
 
   constructor(private randomUserService: RandomUserService){}
 
-  public get pageNumber() {
-    return this.randomUserService.pageNumber;
-  }
+  public get pageNumber() { return this.randomUserService.pageNumber; }
 
-  public get entriesPerPage() {
-    return this.randomUserService.entriesPerPage;
-  }
+  public get entriesPerPage() { return this.randomUserService.entriesPerPage; }
 }

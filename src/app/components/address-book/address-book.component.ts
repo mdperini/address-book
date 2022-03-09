@@ -1,6 +1,5 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
-import { addressBookData } from 'src/app/shared/data/address-book-data';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Observable } from 'rxjs';
 import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
@@ -24,10 +23,6 @@ export class AddressBookComponent {
   public randomUser$ : Observable<addressBookSimple[]> = this.randomUserService.fetchRandomUsers();
   
   constructor(private randomUserService: RandomUserService) { }
-
-  get totalEntries(): number {
-    return 0; 
-  }
 
   onClick(newValue: addressBookSimple): void {
    this.selectedAddressBookEntry = newValue;
