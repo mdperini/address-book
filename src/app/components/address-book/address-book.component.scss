@@ -8,5 +8,9 @@ app-address-book {
         &__start {
             justify-content: flex-start; 
         }
+
+        &__panel {
+            height: 490px
+        }
     }
 }

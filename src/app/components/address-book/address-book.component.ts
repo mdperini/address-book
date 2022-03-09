@@ -20,7 +20,7 @@ export class AddressBookComponent {
   title: string = title;
   selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
   emptyAddressBookEntry = emptyAddressBookEntry;
-  
+
   public randomUser$ : Observable<addressBookSimple[]> = this.randomUserService.fetchRandomUsers();
   
   constructor(private randomUserService: RandomUserService) { }

@@ -12,8 +12,6 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 export class AddressBookFooterComponent {
   ButtonActions = ButtonActions;
 
-  @Input() entries: number = 0;
-
   @Output() pageRequest = new EventEmitter<ButtonActions>()
 
   constructor(private randomUserService: RandomUserService){}
