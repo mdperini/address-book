@@ -12,9 +12,7 @@ export class RandomUserService {
     private _pageNumber: number = 0;
   
     constructor(private randomUserProvider: RandomUserProvider) {
-        // const switched = of(1, 2, 3).pipe(switchMap((x: number) => of(x, x ** 2, x ** 3)));
-        // switched.subscribe(x => console.log(x));
-     }
+    }
 
     public set entriesPerPage(theEntriesPerPage: number) {
         this._entriesPerPage = theEntriesPerPage;
