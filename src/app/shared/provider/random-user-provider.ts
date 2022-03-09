@@ -11,14 +11,14 @@ export class RandomUserProvider {
 
     fetchRandomUsers(pageNumber: number, entriesPerPage: number): Observable<addressBookSimple[]> {
         const url = `https://randomuser.me/api/?page=${pageNumber}&results=${entriesPerPage}&inc=name,phone&seed=abc`;
-       
-            return this.http.get<randomUsers>(url).pipe(map( user=> user.results.map( user=> {
-                return  {
-                                firstName: user.name.first,
-                                lastName: user.name.last,
-                                phoneNumber: user.phone,
-                            } 
-            })));       
+               
+        return this.http.get<randomUsers>(url).pipe(map( user=> user.results.map( user=> {
+            return  {
+                        firstName: user.name.first,
+                        lastName: user.name.last,
+                        phoneNumber: user.phone,
+                    } 
+        })));       
     }
    
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, switchMap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { addressBookSimple } from '../model/add-book-summary-simple';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
@@ -11,8 +11,7 @@ export class RandomUserService {
     private _entriesPerPage: number = defaultEntriesPerPage
     private _pageNumber: number = 0;
   
-    constructor(private randomUserProvider: RandomUserProvider) {
-    }
+    constructor(private randomUserProvider: RandomUserProvider) {}
 
     public set entriesPerPage(theEntriesPerPage: number) {
         this._entriesPerPage = theEntriesPerPage;
