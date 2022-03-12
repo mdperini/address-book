@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { addressBookSimple } from '../model/add-book-simple';
+import { addressBook } from '../model/address-book';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
@@ -18,6 +19,16 @@ export class RandomUserService {
     public get pageNumber() { return this._pageNumber; }
 
     fetchRandomUsers(buttonAction?: ButtonActions): Observable<addressBookSimple[]> {      
+        this.plusMinusPageNumber(buttonAction)
+        return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
+    }
+
+    fetchRandomUser(buttonAction?: ButtonActions): Observable<addressBook[]> {      
+        this.plusMinusPageNumber(buttonAction)
+        return this.randomUserProvider.fetchRandomUser(this._pageNumber);   
+    }
+
+    private plusMinusPageNumber(buttonAction?: ButtonActions): void {
         if (!buttonAction || buttonAction === ButtonActions.Next) {
             this._pageNumber++;
         } else {
@@ -25,8 +36,5 @@ export class RandomUserService {
                 this._pageNumber--;
             }                
         }
-
-        const z =  this.randomUserProvider.fetchRandomUser(this._pageNumber).subscribe((data)=> console.log(`${JSON.stringify(data)}`));
-        return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 }
