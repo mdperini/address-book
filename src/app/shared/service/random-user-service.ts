@@ -26,6 +26,6 @@ export class RandomUserService {
             }                
         }
 
-       return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
+        return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 }
