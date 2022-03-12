@@ -19,7 +19,9 @@ export class ThemeSwitchComponent {
   public theme: string;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
-      this.theme = this.document.documentElement.classList.contains(ThemeSwitchComponent.DARK_THEME_CLASS) ? ThemeSwitchComponent.DARK_THEME_DARK : ThemeSwitchComponent.DARK_THEME_LIGHT;
+      this.theme = this.document.documentElement.classList.contains(ThemeSwitchComponent.DARK_THEME_CLASS) ? 
+                                                                    ThemeSwitchComponent.DARK_THEME_DARK : 
+                                                                    ThemeSwitchComponent.DARK_THEME_LIGHT;
   }
 
   public selectDarkTheme(): void {

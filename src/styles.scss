@@ -26,8 +26,22 @@ $dark-app-theme:   mat-dark-theme((
         )
 ));
 
+@mixin body-theme($theme) {
+        $_background: map-get($theme, background);
+        $app-background-color: mat-color($_background, background);
+
+        body {
+                background-color: $app-background-color;
+        }
+}
+
 @include angular-material-theme($light-app-theme);
+@include body-theme($light-app-theme);
 
 .dark-theme {
   @include angular-material-color($dark-app-theme);
+  @include body-theme($dark-app-theme);
 }
+
+// reference: https://octoperf.com/blog/2021/01/08/angular-material-multiple-themes/#theming-the-application-using-scss-mixins
+// note: to test manually add this class to the HTML tag:  class="dark-theme"

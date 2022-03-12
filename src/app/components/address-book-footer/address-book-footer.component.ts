@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation, ChangeDetectionStrategy  } from '@angular/core';
+import { textConst } from 'src/app/shared/common/textConst';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
 
@@ -12,7 +13,9 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 export class AddressBookFooterComponent {
   ButtonActions = ButtonActions;
 
-  @Output() pageRequest = new EventEmitter<ButtonActions>()
+  @Output() pageRequest = new EventEmitter<ButtonActions>();
+
+  textConst = textConst;
 
   constructor(private randomUserService: RandomUserService){}
 

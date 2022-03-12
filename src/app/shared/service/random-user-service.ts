@@ -18,19 +18,14 @@ export class RandomUserService {
     public get pageNumber() { return this._pageNumber; }
 
     fetchRandomUsers(buttonAction?: ButtonActions): Observable<addressBookSimple[]> {      
-        const action = buttonAction ? buttonAction : ButtonActions.Next;
-        switch(action) {
-            case ButtonActions.Next:
-                this._pageNumber++;
-                break;
-
-            case ButtonActions.Previous:
-                if (this.pageNumber > 1) {
-                    this._pageNumber--;
-                }                
-                break;
+        if (!buttonAction || buttonAction === ButtonActions.Next) {
+            this._pageNumber++;
+        } else {
+            if (this.pageNumber > 1) {
+                this._pageNumber--;
+            }                
         }
-        
+
        return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 }
