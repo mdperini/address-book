@@ -5,12 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressBookModule } from './components/address-book/address-book.module';
+import { WalkThroughDetailModule } from './components/walk-through/walk-through-detail/walk-through-detail.module';
+
 @NgModule({
   declarations: [
-    AppComponent    
+    AppComponent,
   ],
   imports: [
     AddressBookModule,
+    WalkThroughDetailModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,   

@@ -1,6 +1,6 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy  } from '@angular/core';
 import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
-import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
+import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 
 @Component({
   selector: 'app-address-book-detail',

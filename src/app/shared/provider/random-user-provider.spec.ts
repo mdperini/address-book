@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Mock } from 'ts-mocks'
 import { addressBookData } from '../data/address-book-data';
-import { addressBookSimple } from '../model/add-book-summary-simple';
+import { addressBookSimple } from '../model/add-book-simple';
 import { RandomUserProvider } from './random-user-provider';
 
 describe('Provider: RandomUserProvider', () => {

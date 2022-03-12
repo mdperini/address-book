@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddressBookComponent } from './components/address-book/address-book.component';
+import { WalkThroughDetailComponent } from './components/walk-through/walk-through-detail/walk-through-detail.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AddressBookComponent
-},
+    component: AddressBookComponent,
+    
+  },
+  {
+    path: 'detail',
+    component: WalkThroughDetailComponent,
+    
+  },
 ];
 
 @NgModule({

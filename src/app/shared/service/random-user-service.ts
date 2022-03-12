@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { addressBookSimple } from '../model/add-book-summary-simple';
+import { addressBookSimple } from '../model/add-book-simple';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
@@ -26,6 +26,7 @@ export class RandomUserService {
             }                
         }
 
+        const z =  this.randomUserProvider.fetchRandomUser(this._pageNumber).subscribe((data)=> console.log(`${JSON.stringify(data)}`));
         return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 }

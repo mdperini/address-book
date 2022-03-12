@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { Mock } from 'ts-mocks'
 import { addressBookData } from '../data/address-book-data';
-import { addressBookSimple } from '../model/add-book-summary-simple';
+import { addressBookSimple } from '../model/add-book-simple';
 import { ButtonActions } from '../model/button-actions';
 import { RandomUserProvider } from '../provider/random-user-provider';
 import { defaultEntriesPerPage, RandomUserService } from './random-user-service';

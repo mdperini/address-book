@@ -1,4 +1,4 @@
-import { addressBookSimple } from "../model/add-book-summary-simple";
+import { addressBookSimple } from "../model/add-book-simple";
 
 export const addressBookData: addressBookSimple[] =[
     {   

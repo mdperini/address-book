@@ -5,7 +5,7 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 import { AddressBookComponent, title } from './address-book.component';
 import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { addressBookSimple } from 'src/app/shared/model/add-book-summary-simple';
+import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 import { addressBookData } from 'src/app/shared/data/address-book-data';
 import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
 
