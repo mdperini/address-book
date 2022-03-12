@@ -4,10 +4,10 @@
             <div class="footer__buttons">
                 <button mat-button (click)="pageRequest.emit(ButtonActions.Previous)"
                 [disabled]="pageNumber === 1">
-                    {{ ButtonActions.Previous }}
+                    <span class="footer__button">{{ ButtonActions.Previous }}</span>
                 </button>
                 <button mat-button (click)="pageRequest.emit(ButtonActions.Next)">
-                    {{ ButtonActions.Next }}
+                    <span class="footer__button">{{ ButtonActions.Next }}</span>
                 </button>
             </div>
 
