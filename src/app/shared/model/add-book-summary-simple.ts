@@ -3,3 +3,12 @@ export interface addressBookSimple {
     lastName: string,
     phoneNumber: string
 }
+
+export interface addressBook extends addressBookSimple {
+    location: string,
+    email: string,
+    login: string,
+    dob: string,
+    picture: string,
+    nat: string    
+}
