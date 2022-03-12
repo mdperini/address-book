@@ -2,9 +2,9 @@
     <app-address-book-header [title]="title"></app-address-book-header>
     <div class="address-book__panel">
         <mat-selection-list #addressbooklist>
-            <mat-list-item *ngFor="let addressBookEntry of randomUser$ | async ">
-                <button class="address-book__row address-book__start" mat-button (click)="onClick(addressBookEntry)">
-                 <span class="address-book__entries" ><app-fullname [addressBookEntry]="addressBookEntry"></app-fullname></span> 
+            <mat-list-item *ngFor="let randomUser of randomUsers$ | async ">
+                <button class="address-book__row address-book__start" mat-button (click)="onClick(randomUser)">
+                 <span class="address-book__entries" ><app-fullname [addressBookEntry]="randomUser"></app-fullname></span> 
                 </button>
             </mat-list-item>        
         </mat-selection-list> 
