@@ -1,0 +1,15 @@
+app-walk-through-detail {
+    .walk-through {
+        &__center-center {
+            display: flex; 
+            align-items: center;
+            justify-content: center;           
+            width: 100%;  
+            height: 100%;  
+        }   
+
+        &__pt-5 {
+            padding-top: 20px;
+        }
+    }
+}

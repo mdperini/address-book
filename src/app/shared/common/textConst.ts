@@ -3,5 +3,8 @@ export const textConst = {
         title: 'My Address Book',
         entriesPerPage: 'Entries per page:',
         of: 'of'
+    },
+    walkThrough: {
+        title: 'Walk-through',
     }
 }
