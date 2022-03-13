@@ -4,19 +4,19 @@
             <mat-card>
                 <mat-card-content>
                     <div class="walk-through__center-center">
-                        <mat-card-content><span>{{randomPerson.firstName}}</span><span>&nbsp;</span><span>{{randomPerson.lastName}}</span></mat-card-content>                        
+                        <mat-card-content><mat-icon>person</mat-icon><span>{{randomPerson.firstName}}</span><span>&nbsp;</span><span>{{randomPerson.lastName}}</span></mat-card-content>                        
                     </div>                    
                     <div class="walk-through__center-center">
                        <img src="{{ randomPerson.picture.large }}">                        
                        <img src="{{ randomPerson.picture.medium }}">
                        <img src="{{ randomPerson.picture.thumbnail }}">
                     </div>                    
-                    <div class="walk-through__center-center walk-through__upper-spacing"><mat-card-content>{{randomPerson.location}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content>{{randomPerson.email}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content>{{randomPerson.phoneNumber}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content>{{randomPerson.dob | date}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content>{{randomPerson.password}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content>{{randomPerson.nat}}</mat-card-content></div>                   
+                    <div class="walk-through__center-center walk-through__upper-spacing"><mat-card-content><mat-icon> my_location</mat-icon>{{randomPerson.location}}</mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>email</mat-icon><span>{{randomPerson.email}}</span></mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>phone</mat-icon>{{randomPerson.phoneNumber}}</mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>date_range</mat-icon>{{randomPerson.dob | date}}</mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>lock</mat-icon><mat-icon>password</mat-icon>{{randomPerson.password}}</mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>loyalty</mat-icon><mat-icon>language</mat-icon>{{randomPerson.nat}}</mat-card-content></div>                   
                 </mat-card-content>
                 <mat-card-content>
                     <div class="walk-through__center-center">
