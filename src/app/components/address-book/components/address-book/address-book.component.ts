@@ -20,7 +20,7 @@ export class AddressBookComponent implements OnInit {
   selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
   emptyAddressBookEntry = emptyAddressBookEntry;
 
-  public randomUsers$ : Observable<addressBookSimple[]> = this.randomUserService.fetchRandomUsers();
+  public addressBookEntries$ : Observable<addressBookSimple[]> = this.randomUserService.fetchRandomUsers();
   
   constructor(private titleService:Title, 
               private randomUserService: RandomUserService) { }
@@ -35,6 +35,6 @@ export class AddressBookComponent implements OnInit {
   }
 
   onPageRequest(newValue: ButtonActions | any): void {
-    this.randomUsers$ = this.randomUserService.fetchRandomUsers(newValue);
+    this.addressBookEntries$ = this.randomUserService.fetchRandomUsers(newValue);
   }
 }
