@@ -7,11 +7,11 @@
                         <mat-card-content><span>{{randomPerson.firstName}}</span><span>&nbsp;</span><span>{{randomPerson.lastName}}</span></mat-card-content>                        
                     </div>                    
                     <div class="walk-through__center-center">
-                        <img src="{{ randomPerson.picture.large }}" alt="picture">
-                        <img src="{{ randomPerson.picture.medium }}">
-                        <img src="{{ randomPerson.picture.thumbnail }}">
+                       <img src="{{ randomPerson.picture.large }}">                        
+                       <img src="{{ randomPerson.picture.medium }}">
+                       <img src="{{ randomPerson.picture.thumbnail }}">
                     </div>                    
-                    <div class="walk-through__center-center walk-through__pt-5"><mat-card-content>{{randomPerson.location}}</mat-card-content></div>
+                    <div class="walk-through__center-center walk-through__upper-spacing"><mat-card-content>{{randomPerson.location}}</mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content>{{randomPerson.email}}</mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content>{{randomPerson.phoneNumber}}</mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content>{{randomPerson.dob | date}}</mat-card-content></div>

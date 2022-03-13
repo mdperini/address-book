@@ -8,8 +8,13 @@ app-walk-through-detail {
             height: 100%;  
         }   
 
-        &__pt-5 {
-            padding-top: 20px;
+        &__upper-spacing {
+            padding-top:
+             20px;
+        }
+
+        img {
+            border-radius: 100px;
         }
     }
 }
