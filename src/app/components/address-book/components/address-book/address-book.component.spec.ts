@@ -7,7 +7,7 @@ import { RandomUserProvider } from 'src/app/shared/provider/random-user-provider
 import { BehaviorSubject, Observable } from 'rxjs';
 import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 import { addressBookData } from 'src/app/shared/data/address-book-data';
-import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
+import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 
 describe('AddressBookComponent', () => {
   let component: AddressBookComponent;
@@ -55,8 +55,8 @@ describe('AddressBookComponent', () => {
   it('initially should equal', () => {
     expect(component.title).toEqual(title);
     expect(component.addressBookEntries).toEqual(addressBookData);
-    expect(component.selectedAddressBookEntry).toEqual(emptyAddressBookEntry);
-    expect(component.emptyAddressBookEntry).toEqual(emptyAddressBookEntry);
+    expect(component.selectedAddressBookEntry).toEqual(emptyAddressBookSimpleEntry);
+    expect(component.emptyAddressBookEntry).toEqual(emptyAddressBookSimpleEntry);
   });
   
   it('addressBookEntries should be populated', () => {

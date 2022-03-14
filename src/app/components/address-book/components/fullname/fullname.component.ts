@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
-import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
+import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 
 @Component({
@@ -11,6 +11,6 @@ import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 })
 export class FullnameComponent {
 
- @Input() addressBookEntry: addressBookSimple = emptyAddressBookEntry;
+ @Input() addressBookEntry: addressBookSimple = emptyAddressBookSimpleEntry;
 
 }

@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
 import { Title } from '@angular/platform-browser';
 import { Observable } from 'rxjs';
 import { textConst } from 'src/app/shared/common/textConst';
+import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
+import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 import { addressBook } from 'src/app/shared/model/address-book';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
 import { userCategories } from 'src/app/shared/model/user-categories';
@@ -16,9 +18,6 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 })
 export class WalkThroughComponent implements OnInit {
   ButtonActions = ButtonActions;
-  categoryText: string = '';
-  contentText: string = '';
-
   
   constructor(private titleService:Title, 
                private randomUserService: RandomUserService) { }
@@ -34,11 +33,13 @@ export class WalkThroughComponent implements OnInit {
 
 
   onPageRequest(newValue: ButtonActions | any): void {
-    this.randomUser$ = this.randomUserService.fetchRandomUser(newValue);
+    this.randomUser$ = this.randomUserService.fetchRandomUser(newValue);    
   }
 
   onmouseOver(category: userCategories, randomPerson: addressBook): void {
-    this.categoryText = this.randomUserService.getUserCategoryText(category);
-    this.contentText = this.randomUserService.getUserContentText(category, randomPerson);
+    this.randomUserService.walkThrough.next( {
+      userCategory: category,
+      addressBook: randomPerson
+    })
   }
 }

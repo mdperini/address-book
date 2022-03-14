@@ -1,7 +1,18 @@
-import { addressBookSimple } from "../model/add-book-simple";
 
-export const emptyAddressBookEntry: addressBookSimple = {    
+import { addressBook } from "../model/address-book";
+
+export const emptyAddressBookEntry: addressBook = {    
     firstName: '',
     lastName: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    location: '',
+    email: '',
+    password: '',
+    dob: new Date(),
+    picture: {
+        large: '',
+        medium: '',
+        thumbnail: ''
+    },
+    nat: ''
 };

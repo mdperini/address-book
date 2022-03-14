@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@
 import {Title} from "@angular/platform-browser";
 import { Observable } from 'rxjs';
 import { textConst } from 'src/app/shared/common/textConst';
-import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
+import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
@@ -17,8 +17,8 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 
 export class AddressBookComponent implements OnInit {
   title: string = '';
-  selectedAddressBookEntry: addressBookSimple = emptyAddressBookEntry;
-  emptyAddressBookEntry = emptyAddressBookEntry;
+  selectedAddressBookEntry: addressBookSimple = emptyAddressBookSimpleEntry;
+  emptyAddressBookEntry = emptyAddressBookSimpleEntry;
 
   public addressBookEntries$ : Observable<addressBookSimple[]> = this.randomUserService.fetchRandomUsers();
   

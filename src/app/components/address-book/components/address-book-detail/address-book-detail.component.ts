@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy  } from '@angular/core';
-import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-entry';
+import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
 
 @Component({
@@ -10,10 +10,10 @@ import { addressBookSimple } from 'src/app/shared/model/add-book-simple';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddressBookDetailComponent {
-  @Input() addressBookEntry: addressBookSimple = emptyAddressBookEntry;
-  emptyAddressBookEntry = emptyAddressBookEntry;
+  @Input() addressBookEntry: addressBookSimple = emptyAddressBookSimpleEntry;
+  emptyAddressBookEntry = emptyAddressBookSimpleEntry;
 
   onClear(): void {
-    this.addressBookEntry = emptyAddressBookEntry;
+    this.addressBookEntry = emptyAddressBookSimpleEntry;
   }
 }

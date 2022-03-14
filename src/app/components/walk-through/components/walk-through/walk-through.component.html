@@ -7,9 +7,8 @@
                         <img src="{{ randomPerson.picture.large }}">                        
                         <img src="{{ randomPerson.picture.medium }}">
                         <img src="{{ randomPerson.picture.thumbnail }}">
-                     </div>                  
-                     
-                    <app-walk-through-content [categoryText]="categoryText" [contentText]="contentText"></app-walk-through-content>  
+                     </div>                                       
+                    <app-walk-through-content></app-walk-through-content>  
                     <app-walk-through-toolbar (mouseOverIcon)="onmouseOver($event, randomPerson)" ></app-walk-through-toolbar>
                 </mat-card-content>
                 <mat-card-content>

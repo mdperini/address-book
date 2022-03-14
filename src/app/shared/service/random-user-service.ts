@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { textConst } from '../common/textConst';
+import { emptyAddressBookEntry } from '../data/empty-address-book-entry';
 import { addressBookSimple } from '../model/add-book-simple';
 import { addressBook } from '../model/address-book';
 import { ButtonActions } from '../model/button-actions';
 import { userCategories } from '../model/user-categories';
+import { walkThrough } from '../model/walk-through';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
 export const defaultEntriesPerPage = 10;
@@ -13,12 +15,18 @@ export const defaultEntriesPerPage = 10;
 export class RandomUserService {
     private _entriesPerPage: number = defaultEntriesPerPage
     private _pageNumber: number = 0;
+    private _walkThrough = new BehaviorSubject<walkThrough>( {
+        userCategory: userCategories.notSet,
+        addressBook: emptyAddressBookEntry
+    });
   
     constructor(private randomUserProvider: RandomUserProvider) {}
 
     public get entriesPerPage() { return this._entriesPerPage; }
 
     public get pageNumber() { return this._pageNumber; }
+
+    public get walkThrough()  { return this._walkThrough }
 
     fetchRandomUsers(buttonAction?: ButtonActions): Observable<addressBookSimple[]> {      
         this.plusMinusPageNumber(buttonAction)
