@@ -68,7 +68,8 @@ export class RandomUserService {
             case userCategories.emailAddress:
                 return randomPerson.email;
             case userCategories.dateOfBirth:
-                return `${randomPerson.dob}`;
+                const text = `${randomPerson.dob}`;
+                return text;
             case userCategories.location:
                 return randomPerson.location;
             case userCategories.phoneNumber:
