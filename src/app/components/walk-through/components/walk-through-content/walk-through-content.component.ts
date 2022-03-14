@@ -15,21 +15,28 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 export class WalkThroughContentComponent implements OnInit, OnDestroy {
   categoryText: string = '';
   contentText: string = '';
-  subscription: Subscription = new Subscription();
+  subscription: Subscription[] = [];
+  selectedCategory: userCategories = userCategories.notSet;
 
   constructor(private randomUserService: RandomUserService,
               private chgDetRef: ChangeDetectorRef){}
 
   ngOnInit(): void {
-    this.randomUserService.walkThrough.subscribe( (walkThrough => {
+    this.subscription.push(this.randomUserService.walkThrough.subscribe( (walkThrough => {
+      this.selectedCategory = walkThrough.userCategory;
       this.categoryText = this.randomUserService.getUserCategoryText(walkThrough.userCategory);
       this.contentText = this.randomUserService.getUserContentText(walkThrough.userCategory, walkThrough.addressBook);
       this.chgDetRef.detectChanges();
-    }));
+    })));
+
+    this.subscription.push(this.randomUserService.fetchRandomUser().subscribe( (addressBook => {
+      this.contentText = this.randomUserService.getUserContentText(this.selectedCategory, addressBook[0]);
+      this.chgDetRef.detectChanges();
+    })));
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription.forEach( (s)  => s.unsubscribe());
   }
 
 }
