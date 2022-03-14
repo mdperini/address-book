@@ -24,7 +24,10 @@ app-address-book-footer {
          opacity: 0.5;
       }
 
-     
+      &__entries {
+         padding-left: 6px;
+      }
+
       &__page-number {
          padding-right: 10px;
       }

@@ -16,8 +16,8 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 })
 export class WalkThroughComponent implements OnInit {
   ButtonActions = ButtonActions;
-  selectedCategory: userCategories = userCategories.emailAddress;
-  categoryContent: string = '';
+  categoryText: string = '';
+  contentText: string = '';
 
   
   constructor(private titleService:Title, 
@@ -29,6 +29,7 @@ export class WalkThroughComponent implements OnInit {
     this.titleService.setTitle(textConst.walkThrough.title);    
   }            
 
+  
   public get pageNumber() { return this.randomUserService.pageNumber; }
 
 
@@ -36,4 +37,8 @@ export class WalkThroughComponent implements OnInit {
     this.randomUser$ = this.randomUserService.fetchRandomUser(newValue);
   }
 
+  onmouseOver(category: userCategories, randomPerson: addressBook): void {
+    this.categoryText = this.randomUserService.getUserCategoryText(category);
+    this.contentText = this.randomUserService.getUserContentText(category, randomPerson);
+  }
 }

@@ -40,7 +40,45 @@ export class RandomUserService {
         }
     }
 
-    getuserCategoryText(categories: userCategories): string {
-        return textConst.walkThrough.email;
+    getUserCategoryText(selectedCategory: userCategories): string {
+        switch (selectedCategory) {
+            case userCategories.fullName: 
+                return textConst.walkThrough.intro;
+            case userCategories.emailAddress:
+                return textConst.walkThrough.email;
+            case userCategories.dateOfBirth:
+                return textConst.walkThrough.birthday;
+            case userCategories.location:
+                return textConst.walkThrough.address;
+            case userCategories.phoneNumber:
+                return textConst.walkThrough.phone;
+            case userCategories.password:
+                return textConst.walkThrough.password;
+            case userCategories.nationality:
+                return textConst.walkThrough.nationality;
+            default:
+                return '';
+        }        
+    }
+
+    getUserContentText(selectedCategory: userCategories, randomPerson: addressBook): string {
+        switch (selectedCategory) {
+            case userCategories.fullName: 
+                return `${randomPerson.firstName} ${randomPerson.lastName}`;
+            case userCategories.emailAddress:
+                return randomPerson.email;
+            case userCategories.dateOfBirth:
+                return `${randomPerson.dob}`;
+            case userCategories.location:
+                return randomPerson.location;
+            case userCategories.phoneNumber:
+                return randomPerson.phoneNumber;
+            case userCategories.password:
+                return randomPerson.password;
+            case userCategories.nationality:
+                return randomPerson.nat;
+            default:
+                return '';
+        }        
     }
 }

@@ -4,5 +4,7 @@ export enum userCategories {
     dateOfBirth,
     location,
     phoneNumber,
-    nationality
+    password,
+    nationality,
+    notSet
 }

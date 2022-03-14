@@ -1,1 +1,9 @@
-<p>walk-through-toolbar works!</p>
+<section class="toolbar">
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.fullName)">person</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.emailAddress)">email</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.dateOfBirth)">today</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.location)">my_location</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.phoneNumber)">phone</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.password)">lock</mat-icon>
+    <mat-icon class="toolbar__icon" (mouseover)="mouseOverIcon.emit(userCategories.nationality)">language</mat-icon>
+</section>

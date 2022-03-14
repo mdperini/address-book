@@ -1,0 +1,15 @@
+app-walk-through-toolbar {
+    .toolbar {
+        display: flex;        
+        justify-content: space-between;       
+        
+        &__icon {
+            opacity: 0.3; 
+            font-size: 26px;
+            &:hover {
+                opacity: 1; 
+                color: #83ba43;
+            }
+        }
+    }
+}

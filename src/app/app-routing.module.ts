@@ -5,15 +5,17 @@ import { WalkThroughComponent } from './components/walk-through/components/walk-
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'address-book',
     component: AddressBookComponent,
     
   },
   {
-    path: 'detail',
+    path: 'walk-through',
     component: WalkThroughComponent,
     
   },
+  { path: '',   redirectTo: '/address-book', pathMatch: 'full' }, 
+  { path: 'w',   redirectTo: '/walk-through', pathMatch: 'full' }, 
 ];
 
 @NgModule({
