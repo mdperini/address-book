@@ -2,8 +2,13 @@ app-address-book-header {
     .header {
         &__row {
             display: flex; 
-            width: 100%;        
+            width: 100vw;        
             justify-content: space-between; 
+        }
+
+        &__title {
+            font-size: 2.2em;
+            padding-left: 6px;            
         }
     }
 }

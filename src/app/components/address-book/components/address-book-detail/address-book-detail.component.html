@@ -1,9 +1,10 @@
-<mat-card *ngIf="addressBookEntry !== emptyAddressBookEntry" class="address-book-detail">
+<mat-card *ngIf="addressBookEntry !== emptyAddressBookEntry" class="detail">
     <mat-card-title>
-        <div class="address-book-detail__row address-book-detail__between">
+        <div class="detail__row detail__between">
+            <div></div>
             <app-fullname [addressBookEntry]="addressBookEntry"></app-fullname>                
-            <button class="address-book-detail__close"  mat-button (click)="onClear()"><span>&#10006;</span></button>
+            <button class="detail__close"  mat-button (click)="onClear()"><span>&#10006;</span></button>
         </div>
     </mat-card-title>
-    <mat-card-content>{{addressBookEntry.phoneNumber}}</mat-card-content>
+    <mat-card-content class="detail__row detail__center">{{addressBookEntry.phoneNumber}}</mat-card-content>
 </mat-card>

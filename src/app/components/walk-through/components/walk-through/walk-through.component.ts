@@ -4,17 +4,21 @@ import { Observable } from 'rxjs';
 import { textConst } from 'src/app/shared/common/textConst';
 import { addressBook } from 'src/app/shared/model/address-book';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
+import { userCategories } from 'src/app/shared/model/user-categories';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
 
 @Component({
-  selector: 'app-walk-through-detail',
-  templateUrl: './walk-through-detail.component.html',
-  styleUrls: ['./walk-through-detail.component.scss'],
+  selector: 'app-walk-through',
+  templateUrl: './walk-through.component.html',
+  styleUrls: ['./walk-through.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WalkThroughDetailComponent implements OnInit {
+export class WalkThroughComponent implements OnInit {
   ButtonActions = ButtonActions;
+  selectedCategory: userCategories = userCategories.emailAddress;
+  categoryContent: string = '';
+
   
   constructor(private titleService:Title, 
                private randomUserService: RandomUserService) { }

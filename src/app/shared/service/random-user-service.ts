@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { textConst } from '../common/textConst';
 import { addressBookSimple } from '../model/add-book-simple';
 import { addressBook } from '../model/address-book';
 import { ButtonActions } from '../model/button-actions';
+import { userCategories } from '../model/user-categories';
 import { RandomUserProvider } from '../provider/random-user-provider';
 
 export const defaultEntriesPerPage = 10;
@@ -36,5 +38,9 @@ export class RandomUserService {
                 this._pageNumber--;
             }                
         }
+    }
+
+    getuserCategoryText(categories: userCategories): string {
+        return textConst.walkThrough.email;
     }
 }

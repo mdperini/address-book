@@ -1,5 +1,5 @@
 <section class="walk-through walk-through__center-center">
-    <mat-selection-list #addressbooklist>
+    <mat-selection-list #walkthroughlist>
         <mat-list-item *ngFor="let randomPerson of randomUser$ | async ">
             <mat-card>
                 <mat-card-content>
@@ -10,13 +10,14 @@
                        <img src="{{ randomPerson.picture.large }}">                        
                        <img src="{{ randomPerson.picture.medium }}">
                        <img src="{{ randomPerson.picture.thumbnail }}">
-                    </div>                    
+                    </div>                  
+                    <app-walk-through-content [selectedCategory]="selectedCategory" [personsContent]="randomPerson.email"></app-walk-through-content>  
                     <div class="walk-through__center-center walk-through__upper-spacing"><mat-card-content><mat-icon> my_location</mat-icon>{{randomPerson.location}}</mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content><mat-icon>email</mat-icon><span>{{randomPerson.email}}</span></mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content><mat-icon>phone</mat-icon>{{randomPerson.phoneNumber}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content><mat-icon>date_range</mat-icon>{{randomPerson.dob | date}}</mat-card-content></div>
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>today</mat-icon><mat-icon>date_range</mat-icon>{{randomPerson.dob | date}}</mat-card-content></div>
                     <div class="walk-through__center-center"><mat-card-content><mat-icon>lock</mat-icon><mat-icon>password</mat-icon>{{randomPerson.password}}</mat-card-content></div>
-                    <div class="walk-through__center-center"><mat-card-content><mat-icon>loyalty</mat-icon><mat-icon>language</mat-icon>{{randomPerson.nat}}</mat-card-content></div>                   
+                    <div class="walk-through__center-center"><mat-card-content><mat-icon>translate</mat-icon><mat-icon>loyalty</mat-icon><mat-icon>language</mat-icon>{{randomPerson.nat}}</mat-card-content></div>                   
                 </mat-card-content>
                 <mat-card-content>
                     <div class="walk-through__center-center">

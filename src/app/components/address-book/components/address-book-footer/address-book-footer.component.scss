@@ -1,10 +1,10 @@
 app-address-book-footer {
     .footer {
+       width: 100vw;
        &__buttons {
           display: flex; 
           align-items: center;
-          justify-content: center;           
-          width: 100%;          
+          justify-content: center;  
        }
 
        &__button {
@@ -24,10 +24,7 @@ app-address-book-footer {
          opacity: 0.5;
       }
 
-      &__entries {
-         padding-left: 6px;
-      }
-
+     
       &__page-number {
          padding-right: 10px;
       }

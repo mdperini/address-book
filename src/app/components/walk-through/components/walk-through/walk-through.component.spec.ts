@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WalkThroughDetailComponent } from './walk-through-detail.component';
+import { WalkThroughComponent } from './walk-through.component';
 
-describe('WalkThroughDetailComponent', () => {
-  let component: WalkThroughDetailComponent;
-  let fixture: ComponentFixture<WalkThroughDetailComponent>;
+describe('WalkThroughComponent', () => {
+  let component: WalkThroughComponent;
+  let fixture: ComponentFixture<WalkThroughComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WalkThroughDetailComponent ]
+      declarations: [ WalkThroughComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WalkThroughDetailComponent);
+    fixture = TestBed.createComponent(WalkThroughComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
