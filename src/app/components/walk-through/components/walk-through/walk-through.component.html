@@ -15,13 +15,13 @@
                     <app-walk-through-toolbar (mouseOverIcon)="onmouseOver($event, randomPerson)" ></app-walk-through-toolbar>
                 </mat-card-content>
                 <mat-card-content>
-                    <div class="walk-through__center-center">
+                    <div class="walk-through__center-center walk-through__buttons">
                         <button mat-button (click)="onPageRequest(ButtonActions.Previous)"
-                        [disabled]="pageNumber === 1">
-                            <span>{{ ButtonActions.Previous }}</span>
+                            [disabled]="pageNumber === 1">
+                            <mat-icon  matTooltip="{{ButtonActions.Previous}}">arrow_back</mat-icon>
                         </button>
                         <button mat-button (click)="onPageRequest(ButtonActions.Next)">
-                            <span>{{ ButtonActions.Next }}</span>
+                            <mat-icon  matTooltip="{{ButtonActions.Next}}">arrow_forward</mat-icon>
                         </button>
                     </div>
                 </mat-card-content>

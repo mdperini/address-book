@@ -16,8 +16,8 @@ export class ThemeSwitchComponent implements OnChanges {
 
   @Input() toggleSwitch: ThemeTypes = ThemeTypes.Light;
 
-
   ThemeTypes = ThemeTypes;
+
   public theme: string;
 
   constructor(@Inject(DOCUMENT) private document: Document) {
@@ -33,9 +33,7 @@ export class ThemeSwitchComponent implements OnChanges {
       } else {
         this.selectDarkTheme();
       }
-
-    }
-    
+    }    
   }
 
   public selectDarkTheme(): void {
