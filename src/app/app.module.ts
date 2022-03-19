@@ -9,7 +9,7 @@ import { AddressBookModule } from './components/address-book/components/address-
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AddressBookModule,

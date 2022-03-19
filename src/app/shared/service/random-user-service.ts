@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, take } from 'rxjs';
 import { textConst } from '../common/textConst';
 import { emptyAddressBookEntry } from '../data/empty-address-book-entry';
 import { addressBookSimple } from '../model/add-book-simple';
@@ -19,6 +19,8 @@ export class RandomUserService {
         userCategory: userCategories.notSet,
         addressBook: emptyAddressBookEntry
     });
+
+    private _addressBookSubject = new BehaviorSubject<addressBook[]>([])
   
     constructor(private randomUserProvider: RandomUserProvider) {}
 
@@ -33,9 +35,14 @@ export class RandomUserService {
         return this.randomUserProvider.fetchRandomUsers(this._pageNumber, this._entriesPerPage);   
     }
 
+    public get addressBookSubject()  { return this._addressBookSubject }
+
     fetchRandomUser(buttonAction?: ButtonActions): Observable<addressBook[]> {      
         this.plusMinusPageNumber(buttonAction)
-        return this.randomUserProvider.fetchRandomUser(this._pageNumber);   
+        this.randomUserProvider.fetchRandomUser(this._pageNumber)
+                               .subscribe( (data) => this._addressBookSubject.next(data) );      
+
+        return this._addressBookSubject.asObservable();
     }
 
     private plusMinusPageNumber(buttonAction?: ButtonActions): void {

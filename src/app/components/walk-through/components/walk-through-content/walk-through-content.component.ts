@@ -29,7 +29,7 @@ export class WalkThroughContentComponent implements OnInit, OnDestroy {
       this.chgDetRef.detectChanges();
     })));
 
-    this.subscription.push(this.randomUserService.fetchRandomUser().subscribe( (addressBook => {
+    this.subscription.push(this.randomUserService.addressBookSubject.subscribe( (addressBook => {
       this.contentText = this.randomUserService.getUserContentText(this.selectedCategory, addressBook[0]);
       this.chgDetRef.detectChanges();
     })));

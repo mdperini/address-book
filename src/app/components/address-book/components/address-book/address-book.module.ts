@@ -15,7 +15,7 @@ const components = [ AddressBookComponent,
   AddressBookDetailComponent,
   AddressBookHeaderComponent,
   AddressBookFooterComponent,
-  ThemeSwitchComponent];
+  ThemeSwitchComponent]
 
 @NgModule({
   declarations: [...components],

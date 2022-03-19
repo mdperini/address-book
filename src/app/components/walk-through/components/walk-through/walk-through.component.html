@@ -3,6 +3,9 @@
         <mat-list-item *ngFor="let randomPerson of randomUser$ | async ">
             <mat-card class="walk-through__card">
                 <mat-card-content>
+                    <div class="walk-through__header">
+                        <app-walk-through-header [toggleSwitch]="ThemeTypes.Dark"></app-walk-through-header>
+                    </div>
                     <div class="walk-through__center-center">
                         <img src="{{ randomPerson.picture.large }}">                        
                         <img src="{{ randomPerson.picture.medium }}">

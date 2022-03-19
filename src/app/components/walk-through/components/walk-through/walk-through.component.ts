@@ -6,6 +6,7 @@ import { emptyAddressBookEntry } from 'src/app/shared/data/empty-address-book-en
 import { emptyAddressBookSimpleEntry } from 'src/app/shared/data/empty-address-book-simple-entry';
 import { addressBook } from 'src/app/shared/model/address-book';
 import { ButtonActions } from 'src/app/shared/model/button-actions';
+import { ThemeTypes } from 'src/app/shared/model/theme-types';
 import { userCategories } from 'src/app/shared/model/user-categories';
 import { RandomUserService } from 'src/app/shared/service/random-user-service';
 
@@ -17,7 +18,9 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WalkThroughComponent implements OnInit {
-  ButtonActions = ButtonActions;
+  ButtonActions = ButtonActions;  
+  ThemeTypes = ThemeTypes;
+  title: string = '';
   
   constructor(private titleService:Title, 
                private randomUserService: RandomUserService) { }
@@ -25,6 +28,7 @@ export class WalkThroughComponent implements OnInit {
   public randomUser$ : Observable<addressBook[]> = this.randomUserService.fetchRandomUser();
 
   ngOnInit(): void {
+    this.title = textConst.walkThrough.title;
     this.titleService.setTitle(textConst.walkThrough.title);    
   }            
 

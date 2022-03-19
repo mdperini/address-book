@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ChangeDetectionStrategy, Inject, OnChanges, SimpleChanges } from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import { ThemeTypes } from '../../model/theme-types';
 
@@ -9,10 +9,12 @@ import { ThemeTypes } from '../../model/theme-types';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ThemeSwitchComponent {
+export class ThemeSwitchComponent implements OnChanges {
   private static readonly DARK_THEME_CLASS = 'dark-theme';
   private static readonly DARK_THEME_LIGHT = 'light';
   private static readonly DARK_THEME_DARK = 'dark';
+
+  @Input() toggleSwitch: ThemeTypes = ThemeTypes.Light;
 
 
   ThemeTypes = ThemeTypes;
@@ -22,6 +24,18 @@ export class ThemeSwitchComponent {
       this.theme = this.document.documentElement.classList.contains(ThemeSwitchComponent.DARK_THEME_CLASS) ? 
                                                                     ThemeSwitchComponent.DARK_THEME_DARK : 
                                                                     ThemeSwitchComponent.DARK_THEME_LIGHT;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['toggleSwitch'].currentValue) {
+      if (this.toggleSwitch === ThemeTypes.Light) {
+        this.selectLightTheme();
+      } else {
+        this.selectDarkTheme();
+      }
+
+    }
+    
   }
 
   public selectDarkTheme(): void {
