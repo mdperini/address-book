@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, take } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription, take } from 'rxjs';
 import { textConst } from '../common/textConst';
 import { emptyAddressBookEntry } from '../data/empty-address-book-entry';
 import { addressBookSimple } from '../model/add-book-simple';
@@ -12,7 +12,7 @@ import { RandomUserProvider } from '../provider/random-user-provider';
 export const defaultEntriesPerPage = 10;
 
 @Injectable({ providedIn: 'root'})
-export class RandomUserService {
+export class RandomUserService implements OnDestroy {
     private _entriesPerPage: number = defaultEntriesPerPage
     private _pageNumber: number = 0;
     private _walkThrough = new BehaviorSubject<walkThrough>( {
@@ -20,9 +20,15 @@ export class RandomUserService {
         addressBook: emptyAddressBookEntry
     });
 
+    private subscription: Subscription = new Subscription();
+
     private _addressBookSubject = new BehaviorSubject<addressBook[]>([])
   
     constructor(private randomUserProvider: RandomUserProvider) {}
+
+    ngOnDestroy(): void {
+        this.subscription?.unsubscribe();
+    }
 
     public get entriesPerPage() { return this._entriesPerPage; }
 
@@ -39,7 +45,8 @@ export class RandomUserService {
 
     fetchRandomUser(buttonAction?: ButtonActions): Observable<addressBook[]> {      
         this.plusMinusPageNumber(buttonAction)
-        this.randomUserProvider.fetchRandomUser(this._pageNumber)
+        this.subscription?.unsubscribe();
+        this.subscription = this.randomUserProvider.fetchRandomUser(this._pageNumber)
                                .subscribe( (data) => this._addressBookSubject.next(data) );      
 
         return this._addressBookSubject.asObservable();
