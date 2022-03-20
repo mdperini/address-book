@@ -14,11 +14,10 @@ import { RandomUserService } from 'src/app/shared/service/random-user-service';
 })
 export class WalkThroughContentComponent implements OnInit, OnDestroy {
   categoryText: string = '';
-  contentText: string = '';
+  contentText: string | Date = '';
   userCategories=userCategories;
   subscription: Subscription[] = [];
   selectedCategory: userCategories = userCategories.notSet;
-  user: addressBook = emptyAddressBookEntry;
 
   constructor(private randomUserService: RandomUserService,
               private chgDetRef: ChangeDetectorRef){}
@@ -32,7 +31,6 @@ export class WalkThroughContentComponent implements OnInit, OnDestroy {
     })));
 
     this.subscription.push(this.randomUserService.addressBookSubject.subscribe( (addressBook => {
-      this.user = addressBook[0];
       this.contentText = this.randomUserService.getUserContentText(this.selectedCategory, addressBook[0]);
       this.chgDetRef.detectChanges();
     })));

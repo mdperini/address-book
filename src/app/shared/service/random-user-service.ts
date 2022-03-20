@@ -83,15 +83,14 @@ export class RandomUserService implements OnDestroy {
         }        
     }
 
-    getUserContentText(selectedCategory: userCategories, randomPerson: addressBook): string {
+    getUserContentText(selectedCategory: userCategories, randomPerson: addressBook): string | Date {
         switch (selectedCategory) {
             case userCategories.fullName: 
                 return `${randomPerson.firstName} ${randomPerson.lastName}`;
             case userCategories.emailAddress:
                 return randomPerson.email;
             case userCategories.dateOfBirth:
-                const text = `${randomPerson.dob}`;
-                return text;
+                return randomPerson.dob;
             case userCategories.location:
                 return randomPerson.location;
             case userCategories.phoneNumber:
