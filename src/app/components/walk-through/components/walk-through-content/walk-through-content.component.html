@@ -1,4 +1,14 @@
 <section class="walk-through">
     <div class="walk-through__center-center walk-through__text">{{categoryText}}</div>
-    <div class="walk-through__center-center walk-through__content">{{contentText}}</div>
+    <div [ngSwitch]="selectedCategory">
+        <div *ngSwitchCase="userCategories.dateOfBirth">
+            <span class="walk-through__center-center walk-through__content">{{user.dob | date}}</span>
+        </div>
+        <div *ngSwitchDefault>
+            <div *ngTemplateOutlet="contentSection"></div>
+        </div>
+    </div>    
+    <ng-template #contentSection>
+        <div class="walk-through__center-center walk-through__content">{{contentText}}</div>
+    </ng-template>
 </section>
